@@ -1,0 +1,73 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use "sass:color";
+
+.contenedor-nueva-tarea {
+    display: flex;
+    justify-content: center;
+    .agregar-tarea {
+        @include m.boton(v.$cyan, v.$blanco);
+        & {
+            border-radius: 1rem;
+        }
+    }
+}
+.listado-tareas {
+    list-style: none;
+    padding: 0;
+    margin-top: 3rem;
+    .no-tareas {
+        text-align: center;
+    }
+}
+.tarea {
+    display: block;
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid color.adjust(v.$grisOscuro, $lightness: 40%);
+    margin-bottom: 1rem;
+    &:last-of-type {
+        border: none;
+    }
+    p {
+        font-size: 1.5rem;
+    }
+    .opciones {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 1rem;
+        button {
+            border: none;
+            font-size: 1rem;
+            padding: 1rem 1.5rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 2rem;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .completa {
+            background-color: v.$azul;
+            color: v.$blanco;
+        }
+        .pendiente {
+            background-color: v.$naranja;
+            color: v.$blanco;
+        }
+        .editar-tarea{
+            background-color: v.$morado;
+            color: v.$blanco;
+        }
+        .eliminar-tarea {
+            background-color: v.$rojo;
+            color: v.$blanco;
+        }
+    }
+    @include m.telefono {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5rem 2rem;
+    }
+}
